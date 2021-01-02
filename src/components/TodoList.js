@@ -1,26 +1,15 @@
-import { React, useEffect, useState } from 'react';
-import axios from 'axios';
+import { React } from 'react';
+import './TodoList.css';
+import { TodoListItem } from './TodoListItem';
 
-function TodoList() {
-  const [todoList, setTodoList] = useState([]);
-
-  useEffect(() => {
-    axios('http://localhost:3000/todos')
-      .then((response) => {
-        console.log(response);
-        setTodoList(response.data);
-      });
-  }, []);
-
+export const TodoList = ({ todoListItems, ...props }) => {
   return (
     <ul>
       {
-        todoList.length > 0 && todoList.map(todo => (
-          <li key={todo.id}>{todo.description}</li>
+        todoListItems.length >0  && todoListItems.map(todoItem => (
+          <TodoListItem key={todoItem.id} {...todoItem} />
         ))
       }
     </ul>
   );
 }
-
-export default TodoList;
