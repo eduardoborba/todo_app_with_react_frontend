@@ -4,11 +4,16 @@ import './TodoListItem.css';
 export const TodoListItem = ({ id, description, due_date, note, created_at, update_at }) => {
   const markComplete = (e) => {
     e.preventDefault();
-    debugger;
+    console.log('Mark');
+  };
+
+  const openEditForm = (e) => {
+    e.preventDefault();
+    console.log('Open Edit Form');
   };
 
   return (
-    <li>
+    <li onClick={openEditForm}>
       <input
         type="checkbox"
         checked={false}
