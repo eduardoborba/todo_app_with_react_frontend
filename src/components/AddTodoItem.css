@@ -1,0 +1,13 @@
+.add-item-form {
+  margin: 0;
+  padding: 0;
+}
+
+.item-description-input {
+  width: 100%;
+  margin: 0;
+  border: 1px solid #d4caca;
+  border-radius: 3px;
+  padding: 10px;
+  background-color: #f9f9f9;
+}

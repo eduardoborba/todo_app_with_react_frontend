@@ -8,11 +8,15 @@ function App() {
   const [todoListItems, setTodoListItems] = useState([]);
 
   useEffect(() => {
+    loadList();
+  }, []);
+
+  const loadList = function() {
     axios('http://localhost:3000/todos')
       .then((response) => {
         setTodoListItems(response.data);
       });
-  }, []);
+  }
 
   return (
     <div className="main-app">

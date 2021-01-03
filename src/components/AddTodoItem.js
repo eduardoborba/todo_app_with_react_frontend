@@ -1,10 +1,18 @@
-import { React } from 'react';
+import { React, useState } from 'react';
+import axios from 'axios';
 import './AddTodoItem.css';
 
-export const AddTodoItem = ({ id, description, due_date, note, created_at, update_at }) => {
+export const AddTodoItem = () => {
+  const [itemDescription, setItemDescription] = useState('');
+
   const addNewItem = (e) => {
     e.preventDefault();
-    console.log('Add New Item');
+    axios.post('http://localhost:3000/todos', {
+      description: itemDescription
+    }).then((response) => {
+      setItemDescription('');
+    });
+
   };
 
   return (
@@ -12,6 +20,9 @@ export const AddTodoItem = ({ id, description, due_date, note, created_at, updat
       <input
         className="item-description-input"
         type="text"
+        placeholder="Add a Task"
+        value={itemDescription}
+        onChange={e => setItemDescription(e.target.value)}
       />
     </form>
   );
